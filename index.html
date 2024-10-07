@@ -55,6 +55,7 @@
             margin-left: 250px; /* Space for sidebar */
             padding: 20px;
             width: calc(100% - 250px); /* Ensure main content doesn't overflow */
+            transition: margin-left 0.3s ease; /* Smooth transition for main content */
         }
 
         /* SoundCloud player styling */
@@ -62,6 +63,7 @@
             width: 100%;
             height: 200px; /* Set height for the player */
             margin-top: 20px;
+            display: block; /* Ensure it takes its own space */
         }
 
         /* Toggle button */
@@ -137,7 +139,7 @@
         <button class="toggle-button" onclick="toggleSidebar()">☰</button>
         <h2 style="color: #aef9f6;">My Tracks</h2>
         <iframe class="soundcloud-player" scrolling="no" frameborder="no"
-            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/crittersmusic/tracks&color=%23AEF9F6&auto_play=false&hide_related=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/crittersmusic&color=%23AEF9F6&auto_play=false&hide_related=true&show_user=true&show_reposts=false&show_teaser=false&visual=true">
         </iframe>
         <footer>© 2024 Critters Music. All rights reserved.</footer>
     </div>
@@ -146,9 +148,12 @@
         function toggleSidebar() {
             const sidebar = document.querySelector('.sidebar');
             const button = document.querySelector('.toggle-button');
+            const mainContent = document.querySelector('.main-content');
+
             const isExpanded = sidebar.style.transform === 'translateX(0px)';
             sidebar.style.transform = isExpanded ? 'translateX(-250px)' : 'translateX(0)';
             button.style.right = isExpanded ? '-50px' : '10px'; // Adjust position
+            mainContent.style.marginLeft = isExpanded ? '0' : '250px'; // Adjust content margin
         }
     </script>
 </body>
