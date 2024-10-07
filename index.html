@@ -14,7 +14,6 @@
             background-color: #1e1e1e;
             color: #fff;
             display: flex;
-            flex-direction: row;
             transition: all 0.3s ease; /* Smooth transitions */
         }
 
@@ -39,134 +38,117 @@
             margin-bottom: 20px;
         }
 
-        .sidebar .social-links a {
-            display: block;
-            color: #87c5c3; /* Slightly different shade of blue */
+        .sidebar a {
+            color: #FFFFFF;
             text-decoration: none;
+            display: block;
             margin: 10px 0;
-            font-size: 1.1em;
-            transition: color 0.3s ease; /* Smooth transition on hover */
+            transition: color 0.3s ease;
         }
 
-        .sidebar .social-links a:hover {
-            color: #AEF9F6; /* Hover effect */
+        .sidebar a:hover {
+            color: #aef9f6; /* Lighten the color on hover */
         }
 
-        /* Main content area */
+        /* Main content styling */
         .main-content {
-            flex: 1;
-            padding: 40px;
-            margin-left: 250px; /* Offset for sidebar */
-            transition: margin-left 0.3s ease; /* Smooth transition for margin */
+            margin-left: 250px; /* Space for sidebar */
+            padding: 20px;
+            width: calc(100% - 250px); /* Ensure main content doesn't overflow */
         }
 
-        .main-content h2 {
-            color: #90E0D5; /* Light blue for My Tracks */
-            margin-bottom: 30px; /* Added margin for spacing */
-            margin-left: 10px; /* Extra margin to avoid tightness */
-        }
-
-        /* SoundCloud player */
-        iframe {
+        /* SoundCloud player styling */
+        .soundcloud-player {
             width: 100%;
-            height: 300px; /* Adjusted for better visibility */
-            border: none;
-        }
-
-        /* Toggle button for mobile */
-        .toggle-btn {
-            display: none; /* Hide button on larger screens */
-            position: fixed;
-            top: 20px;
-            left: 20px; /* Default position */
-            background-color: #AEF9F6;
-            color: #222;
-            border: none;
-            padding: 10px 15px;
-            cursor: pointer;
-            z-index: 1001; /* Above the sidebar */
-        }
-
-        /* Toggle button position when sidebar is active */
-        .toggle-btn.active {
-            left: 250px; /* Move to the right of the sidebar */
-        }
-
-        /* Footer styling */
-        footer {
+            height: 200px; /* Set height for the player */
             margin-top: 20px;
-            color: #AEF9F6;
+        }
+
+        /* Toggle button */
+        .toggle-button {
+            position: absolute;
+            top: 20px;
+            right: -50px; /* Adjust position to the right */
+            width: 50px;
+            height: 50px;
+            background-color: #AEF9F6;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: right 0.3s ease; /* Smooth transition for toggling */
+            z-index: 1100; /* Ensure button is on top */
+        }
+
+        /* Copyright styling */
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #ccc;
         }
 
         /* Responsive styles */
         @media (max-width: 768px) {
             .sidebar {
-                width: 100%;
-                height: auto; /* Let it be dynamic based on content */
-                padding: 10px; /* Reduce padding on mobile */
-                transform: translateX(-100%); /* Hide by default */
-            }
-            
-            .sidebar.active {
-                transform: translateX(0); /* Show when active */
-            }
-
-            .sidebar h1 {
-                font-size: 1.8em; /* Adjust heading size */
-            }
-
-            .sidebar .social-links a {
-                font-size: 1em; /* Adjust font size for links */
+                width: 200px; /* Smaller width for mobile */
             }
 
             .main-content {
-                padding: 20px; /* Reduce padding on mobile */
-                margin-left: 0; /* No margin on mobile */
+                margin-left: 200px; /* Adjust margin for mobile */
+                width: calc(100% - 200px); /* Adjust content width */
             }
 
-            iframe {
-                height: 200px; /* Adjust height for smaller screens */
+            .toggle-button {
+                right: -30px; /* Adjust for mobile */
             }
 
-            .toggle-btn {
-                display: block; /* Show toggle button on mobile */
-                top: 20px; /* Position it above the sidebar */
-                left: 20px; /* Keep it on the left */
+            .soundcloud-player {
+                height: 150px; /* Smaller height for mobile */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .sidebar {
+                width: 100%; /* Full width for mobile */
+                height: auto; /* Auto height for mobile */
+                position: relative; /* Change to relative */
+            }
+
+            .main-content {
+                margin-left: 0; /* No margin for mobile */
+                width: 100%; /* Full width */
+            }
+
+            .toggle-button {
+                right: 10px; /* Adjust for mobile */
+                top: 10px; /* Adjust position */
             }
         }
     </style>
 </head>
 <body>
-
-    <!-- Toggle Button -->
-    <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
-
-    <!-- Sidebar -->
-    <div class="sidebar" id="sidebar">
+    <div class="sidebar">
         <h1>Critters Music</h1>
-        <div class="social-links">
-            <a href="https://www.instagram.com/crittersmusic" target="_blank">Instagram</a>
-            <a href="https://www.tiktok.com/@crittersmusic" target="_blank">TikTok</a>
-            <a href="https://www.youtube.com/@crittersmusic" target="_blank">YouTube</a>
-            <a href="https://soundcloud.com/crittersmusic" target="_blank">SoundCloud</a>
-        </div>
+        <a href="https://instagram.com/crittersmusic" target="_blank">Instagram</a>
+        <a href="https://tiktok.com/@crittersmusic" target="_blank">TikTok</a>
+        <a href="https://youtube.com/crittersmusic" target="_blank">YouTube</a>
+        <a href="https://soundcloud.com/crittersmusic/tracks" target="_blank">SoundCloud</a>
     </div>
-
-    <!-- Main Content -->
     <div class="main-content">
-        <h2>My Tracks</h2>
-        <iframe
-            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/crittersmusic/tracks&color=%23AEF9F6&auto_play=false&hide_related=true&show_comments=false&show_user=true&show_reposts=false&show_teaser=false"
-            scrolling="no"></iframe>
-        <button class="toggle-btn" onclick="toggleSidebar()">☰</button> <!-- Moved Toggle Button -->
+        <button class="toggle-button" onclick="toggleSidebar()">☰</button>
+        <h2 style="color: #aef9f6;">My Tracks</h2>
+        <iframe class="soundcloud-player" scrolling="no" frameborder="no"
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/crittersmusic/tracks&color=%23AEF9F6&auto_play=false&hide_related=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
+        </iframe>
+        <footer>© 2024 Critters Music. All rights reserved.</footer>
     </div>
 
     <script>
         function toggleSidebar() {
-            const sidebar = document.getElementById("sidebar");
-            const toggleButton = document.querySelector(".toggle-btn");
-            sidebar.classList.toggle("active");
-            toggleButton.classList.toggle("active");
+            const sidebar = document.querySelector('.sidebar');
+            const button = document.querySelector('.toggle-button');
+            const isExpanded = sidebar.style.transform === 'translateX(0px)';
+            sidebar.style.transform = isExpanded ? 'translateX(-250px)' : 'translateX(0)';
+            button.style.right = isExpanded ? '-50px' : '10px'; // Adjust position
         }
     </script>
 </body>
