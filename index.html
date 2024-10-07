@@ -77,13 +77,18 @@
             display: none; /* Hide button on larger screens */
             position: fixed;
             top: 20px;
-            left: 20px;
+            left: 20px; /* Default position */
             background-color: #AEF9F6;
             color: #222;
             border: none;
             padding: 10px 15px;
             cursor: pointer;
             z-index: 1001; /* Above the sidebar */
+        }
+
+        /* Toggle button position when sidebar is active */
+        .toggle-btn.active {
+            left: 250px; /* Move to the right of the sidebar */
         }
 
         /* Footer styling */
@@ -167,6 +172,10 @@
             const sidebar = document.getElementById('sidebar');
             sidebar.classList.toggle('active');
             const mainContent = document.querySelector('.main-content');
+            const toggleBtn = document.querySelector('.toggle-btn');
+            sidebar.classList.contains('active') ? 
+                toggleBtn.classList.add('active') : 
+                toggleBtn.classList.remove('active');
             mainContent.style.marginLeft = sidebar.classList.contains('active') ? '250px' : '0';
         }
     </script>
