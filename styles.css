@@ -1,73 +1,30 @@
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #f0f8ff; /* Light background */
-    color: #333;
-}
-
-.sidebar {
-    position: fixed;
-    width: 200px;
-    height: 100%;
-    background-color: #aef9f6; /* Sidebar color */
-    padding: 20px;
-    transition: all 0.3s;
-    z-index: 10; /* Ensures sidebar stays on top */
-}
-
-.sidebar h1 {
-    margin: 0 0 20px 0;
-    font-size: 24px;
-}
-
-.sidebar a {
-    display: block;
-    margin: 10px 0;
-    color: #333;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.sidebar a:hover {
-    color: #006666; /* Darker blue on hover */
-}
-
-.content {
-    margin-left: 220px; /* Space for sidebar */
-    padding: 20px;
-    transition: margin-left 0.3s; /* Smooth transition for sidebar toggle */
-}
-
-.my-tracks {
-    padding-left: 15px;
-    margin: 20px 0; /* Space around the title */
-    color: #004d4d; /* Track title color */
-}
-
 .toggle-button {
-    position: absolute;
+    position: fixed;
     top: 10px;
     left: 10px;
-    background-color: #aef9f6; /* Button color */
+    background-color: #aef9f6;
     border: none;
     cursor: pointer;
     font-size: 20px;
     padding: 10px;
-    z-index: 15; /* Keeps the button on top */
+    z-index: 15;
 }
 
 @media (max-width: 768px) {
+    .toggle-button {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 100; /* Makes sure it stays on top */
+    }
+
     .sidebar {
         width: 100%;
-        position: relative;
+        position: fixed;
+        z-index: 10; /* Sidebar below button */
     }
 
     .content {
-        margin-left: 0; /* No margin for mobile */
-    }
-
-    .toggle-button {
-        position: relative;
-        margin: 10px 0;
+        margin-left: 0;
     }
 }
