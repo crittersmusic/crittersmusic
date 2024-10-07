@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #f0f8ff;
+    background-color: #f0f8ff; /* Light background */
     color: #333;
 }
 
@@ -9,9 +9,10 @@ body {
     position: fixed;
     width: 200px;
     height: 100%;
-    background-color: #aef9f6;
+    background-color: #aef9f6; /* Sidebar color */
     padding: 20px;
     transition: all 0.3s;
+    z-index: 10; /* Ensures sidebar stays on top */
 }
 
 .sidebar h1 {
@@ -28,30 +29,31 @@ body {
 }
 
 .sidebar a:hover {
-    color: #006666; /* Change to a darker blue on hover */
+    color: #006666; /* Darker blue on hover */
 }
 
 .content {
-    margin-left: 220px; /* Give space for the sidebar */
+    margin-left: 220px; /* Space for sidebar */
     padding: 20px;
+    transition: margin-left 0.3s; /* Smooth transition for sidebar toggle */
 }
 
 .my-tracks {
     padding-left: 15px;
-    padding-top: 10px;
-    margin: 20px 0; /* Add margin for spacing */
-    color: #004d4d; /* Lighter blue for better contrast */
+    margin: 20px 0; /* Space around the title */
+    color: #004d4d; /* Track title color */
 }
 
 .toggle-button {
     position: absolute;
     top: 10px;
     left: calc(100% + 10px);
-    background-color: #aef9f6;
+    background-color: #aef9f6; /* Button color */
     border: none;
     cursor: pointer;
     font-size: 20px;
     padding: 10px;
+    z-index: 15; /* Keeps the button on top */
 }
 
 @media (max-width: 768px) {
@@ -60,9 +62,8 @@ body {
         position: relative;
     }
 
-    .my-tracks {
-        margin-left: 0;
-        padding-left: 0;
+    .content {
+        margin-left: 0; /* No margin for mobile */
     }
 
     .toggle-button {
