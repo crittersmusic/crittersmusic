@@ -2,7 +2,6 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     display: flex;
-    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 .sidebar {
@@ -11,14 +10,12 @@ body {
     padding: 20px;
     height: 100vh;
     position: fixed;
-    box-sizing: border-box; /* Include padding and border in total width */
 }
 
 .content {
     margin-left: 250px;
     padding: 20px;
     flex-grow: 1;
-    box-sizing: border-box; /* Include padding and border in total width */
 }
 
 h1 {
