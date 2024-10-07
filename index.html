@@ -14,6 +14,8 @@
             background-color: #1e1e1e;
             color: #fff;
             display: flex;
+            flex-direction: row;
+            transition: all 0.3s ease; /* Smooth transitions */
         }
 
         /* Sidebar styling */
@@ -23,6 +25,12 @@
             width: 250px;
             height: 100vh;
             box-shadow: 3px 0 5px rgba(0, 0, 0, 0.2);
+            position: fixed; /* Fixed position */
+            left: 0;
+            top: 0;
+            transform: translateX(0); /* Default position */
+            transition: transform 0.3s ease; /* Smooth transition for toggling */
+            z-index: 1000; /* Ensure sidebar is on top */
         }
 
         .sidebar h1 {
@@ -48,6 +56,8 @@
         .main-content {
             flex: 1;
             padding: 40px;
+            margin-left: 250px; /* Offset for sidebar */
+            transition: margin-left 0.3s ease; /* Smooth transition for margin */
         }
 
         .main-content h2 {
@@ -62,6 +72,20 @@
             border: none;
         }
 
+        /* Toggle button for mobile */
+        .toggle-btn {
+            display: none; /* Hide button on larger screens */
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #AEF9F6;
+            color: #222;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            z-index: 1001; /* Above the sidebar */
+        }
+
         /* Footer styling */
         footer {
             margin-top: 20px;
@@ -74,8 +98,13 @@
                 width: 100%;
                 height: auto; /* Let it be dynamic based on content */
                 padding: 10px; /* Reduce padding on mobile */
+                transform: translateX(-100%); /* Hide by default */
             }
             
+            .sidebar.active {
+                transform: translateX(0); /* Show when active */
+            }
+
             .sidebar h1 {
                 font-size: 1.8em; /* Adjust heading size */
             }
@@ -86,10 +115,15 @@
 
             .main-content {
                 padding: 20px; /* Reduce padding on mobile */
+                margin-left: 0; /* No margin on mobile */
             }
 
             iframe {
                 height: 200px; /* Adjust height for smaller screens */
+            }
+
+            .toggle-btn {
+                display: block; /* Show toggle button on mobile */
             }
         }
 
@@ -97,8 +131,11 @@
 </head>
 <body>
 
+    <!-- Toggle Button -->
+    <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+
     <!-- Sidebar -->
-    <div class="sidebar">
+    <div class="sidebar" id="sidebar">
         <h1>Critters Music</h1>
         <div class="social-links">
             <a href="https://www.instagram.com/crittersmusic" target="_blank">Instagram</a>
@@ -122,6 +159,15 @@
             <p>&copy; 2024 Critters Music. All rights reserved.</p>
         </footer>
     </div>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+            const mainContent = document.querySelector('.main-content');
+            mainContent.style.marginLeft = sidebar.classList.contains('active') ? '250px' : '0';
+        }
+    </script>
 
 </body>
 </html>
