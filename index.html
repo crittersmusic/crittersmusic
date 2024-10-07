@@ -3,157 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Critters Music</title>
-    <style>
-        /* General styling */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #1e1e1e;
-            color: #fff;
-            display: flex;
-            transition: all 0.3s ease; /* Smooth transitions */
-        }
-
-        /* Sidebar styling */
-        .sidebar {
-            background-color: #222;
-            padding: 20px;
-            width: 250px;
-            height: 100vh;
-            box-shadow: 3px 0 5px rgba(0, 0, 0, 0.2);
-            position: fixed; /* Fixed position */
-            left: 0;
-            top: 0;
-            transform: translateX(0); /* Default position */
-            transition: transform 0.3s ease; /* Smooth transition for toggling */
-            z-index: 1000; /* Ensure sidebar is on top */
-        }
-
-        .sidebar h1 {
-            color: #AEF9F6;
-            font-size: 2.2em;
-            margin-bottom: 20px;
-        }
-
-        .sidebar a {
-            color: #FFFFFF;
-            text-decoration: none;
-            display: block;
-            margin: 10px 0;
-            transition: color 0.3s ease;
-        }
-
-        .sidebar a:hover {
-            color: #aef9f6; /* Lighten the color on hover */
-        }
-
-        /* Main content styling */
-        .main-content {
-            margin-left: 250px; /* Space for sidebar */
-            padding: 20px;
-            width: calc(100% - 250px); /* Ensure main content doesn't overflow */
-            transition: margin-left 0.3s ease; /* Smooth transition for main content */
-        }
-
-        /* SoundCloud player styling */
-        .soundcloud-player {
-            width: 100%;
-            height: 200px; /* Set height for the player */
-            margin-top: 20px;
-            display: block; /* Ensure it takes its own space */
-        }
-
-        /* Toggle button */
-        .toggle-button {
-            position: absolute;
-            top: 20px;
-            right: -50px; /* Adjust position to the right */
-            width: 50px;
-            height: 50px;
-            background-color: #AEF9F6;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: right 0.3s ease; /* Smooth transition for toggling */
-            z-index: 1100; /* Ensure button is on top */
-        }
-
-        /* Copyright styling */
-        footer {
-            text-align: center;
-            margin-top: 20px;
-            color: #ccc;
-        }
-
-        /* Responsive styles */
-        @media (max-width: 768px) {
-            .sidebar {
-                width: 200px; /* Smaller width for mobile */
-            }
-
-            .main-content {
-                margin-left: 200px; /* Adjust margin for mobile */
-                width: calc(100% - 200px); /* Adjust content width */
-            }
-
-            .toggle-button {
-                right: -30px; /* Adjust for mobile */
-            }
-
-            .soundcloud-player {
-                height: 150px; /* Smaller height for mobile */
-            }
-        }
-
-        @media (max-width: 480px) {
-            .sidebar {
-                width: 100%; /* Full width for mobile */
-                height: auto; /* Auto height for mobile */
-                position: relative; /* Change to relative */
-            }
-
-            .main-content {
-                margin-left: 0; /* No margin for mobile */
-                width: 100%; /* Full width */
-            }
-
-            .toggle-button {
-                right: 10px; /* Adjust for mobile */
-                top: 10px; /* Adjust position */
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="sidebar">
         <h1>Critters Music</h1>
-        <a href="https://instagram.com/crittersmusic" target="_blank">Instagram</a>
-        <a href="https://tiktok.com/@crittersmusic" target="_blank">TikTok</a>
-        <a href="https://youtube.com/crittersmusic" target="_blank">YouTube</a>
-        <a href="https://soundcloud.com/crittersmusic/tracks" target="_blank">SoundCloud</a>
+        <a href="https://www.instagram.com/crittersmusic/" target="_blank">Instagram</a>
+        <a href="https://www.tiktok.com/@crittersmusic" target="_blank">TikTok</a>
+        <a href="https://www.youtube.com/@crittersmusic" target="_blank">YouTube</a>
+        <a href="https://soundcloud.com/crittersmusic" target="_blank">SoundCloud</a>
     </div>
-    <div class="main-content">
+    
+    <div class="content">
         <button class="toggle-button" onclick="toggleSidebar()">☰</button>
-        <h2 style="color: #aef9f6;">My Tracks</h2>
-        <iframe class="soundcloud-player" scrolling="no" frameborder="no"
-            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/crittersmusic&color=%23AEF9F6&auto_play=false&hide_related=true&show_user=true&show_reposts=false&show_teaser=false&visual=true">
+        <h2 class="my-tracks">My Tracks</h2>
+        <iframe 
+            width="100%" 
+            height="200" 
+            scrolling="no" 
+            frameborder="no" 
+            allow="autoplay" 
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/users/crittersmusic/tracks&color=%23AEF9F6&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
         </iframe>
-        <footer>© 2024 Critters Music. All rights reserved.</footer>
+        <p>&copy; 2024 Critters Music</p>
     </div>
 
     <script>
         function toggleSidebar() {
             const sidebar = document.querySelector('.sidebar');
-            const button = document.querySelector('.toggle-button');
-            const mainContent = document.querySelector('.main-content');
-
-            const isExpanded = sidebar.style.transform === 'translateX(0px)';
-            sidebar.style.transform = isExpanded ? 'translateX(-250px)' : 'translateX(0)';
-            button.style.right = isExpanded ? '-50px' : '10px'; // Adjust position
-            mainContent.style.marginLeft = isExpanded ? '0' : '250px'; // Adjust content margin
+            sidebar.classList.toggle('active');
         }
     </script>
 </body>
