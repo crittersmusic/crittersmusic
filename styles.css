@@ -38,3 +38,8 @@ a:hover {
 }
 
 /* Additional media queries if needed */
+@media (max-width: 768px) {
+    iframe {
+        height: 300px; /* Adjust the height for mobile */
+    }
+}
