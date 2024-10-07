@@ -1,0 +1,72 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff;
+    color: #333;
+}
+
+.sidebar {
+    position: fixed;
+    width: 200px;
+    height: 100%;
+    background-color: #aef9f6;
+    padding: 20px;
+    transition: all 0.3s;
+}
+
+.sidebar h1 {
+    margin: 0 0 20px 0;
+    font-size: 24px;
+}
+
+.sidebar a {
+    display: block;
+    margin: 10px 0;
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.sidebar a:hover {
+    color: #006666; /* Change to a darker blue on hover */
+}
+
+.content {
+    margin-left: 220px; /* Give space for the sidebar */
+    padding: 20px;
+}
+
+.my-tracks {
+    padding-left: 15px;
+    padding-top: 10px;
+    margin: 20px 0; /* Add margin for spacing */
+    color: #004d4d; /* Lighter blue for better contrast */
+}
+
+.toggle-button {
+    position: absolute;
+    top: 10px;
+    left: calc(100% + 10px);
+    background-color: #aef9f6;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 10px;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        position: relative;
+    }
+
+    .my-tracks {
+        margin-left: 0;
+        padding-left: 0;
+    }
+
+    .toggle-button {
+        position: relative;
+        margin: 10px 0;
+    }
+}
